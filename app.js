@@ -14,8 +14,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+
+//Serving public folder 
+app.use(express.static('public'));
+
+
 //Adding routes
+app.use("/", routes.root);
 app.use("/user", routes.user);
+
 
 
 //Starting server
