@@ -18,7 +18,7 @@ user.route("/")
         }
     })
     .post(async (req, res) => {
-        if(await db.add_user(req.body)) res.sendStatus(200);
+        if (await db.add_user(req.body)) res.sendStatus(200);
         else res.sendStatus(404);
     });
 
