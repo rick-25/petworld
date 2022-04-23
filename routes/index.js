@@ -3,10 +3,11 @@ const db = require("../db");
 
 const user = express.Router();
 const root = express.Router();
+const post = express.Router();
 
 root.route("/")
     .get((req, res) => {
-        res.redirect("/signin.html");
+        res.redirect("/static/signin.html");
     });
 
 user.route("/")
@@ -22,7 +23,18 @@ user.route("/")
         else res.sendStatus(404);
     });
 
+
+post.route("/") 
+    .get(async (req, res) => {
+
+    })
+    .post(async (req, res) => {
+
+    });
+
+
 module.exports = {
     root,
-    user
+    user,
+    post,
 };
