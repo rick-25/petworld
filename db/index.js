@@ -1,12 +1,7 @@
 const mysql = require('mysql2');
+const petworld_config = require('../configs/petworld');
 
-const conn = mysql.createPool({
-    connectionLimit: 10,
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "petworld",
-});
+const conn = mysql.createPool(petworld_config);
 
 const fireQuerry = (sql, data = []) => {
     return new Promise((resolve, reject) => {
@@ -29,11 +24,15 @@ const auth_user = async (user_data) => {
     return false;
 };
 
+const auth_session = async (session_data) => {
+
+};
+
 const add_user = async (user_info) => {
     if (!user_info.email || !user_info.password || !user_info.name || !user_info.address) return false;
-    let sql = "insert into user values(?, ?, ?, ?, ?, ?);";
+    let sql = "insert into user values(?, ?, ?, ?, ?, ?, ?, ?);";
     try {
-        let tuple = await fireQuerry(sql, [user_info.email, user_info.password, user_info.name, user_info.address, null, null]);
+        let tuple = await fireQuerry(sql, [user_info.email, user_info.password, user_info.name, user_info.address, null, false, null, null]);
         console.log(tuple);
         return true;
     } catch (e) {
@@ -43,6 +42,10 @@ const add_user = async (user_info) => {
     return false;
 };
 
+
+const add_post = async (post_info) => {
+
+};
 
 module.exports = {
     fireQuerry,
