@@ -29,6 +29,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use("/", routes.root);
 app.use("/user", routes.user);
 app.use("/post", routes.post);
+app.use("/api", routes.api);
 
 app.get("/test", async (req, res) => {
     const db = require('./models');
