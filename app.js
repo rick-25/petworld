@@ -42,7 +42,6 @@ app.get("/test", async (req, res) => {
     res.send(me);
 })
 
-
 //Starting server
 app.listen(process.env.PORT || 3300, () => {
     console.log(`🚀 Server ready at http://localhost:${process.env.PORT || 3300}/`)

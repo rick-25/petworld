@@ -10,7 +10,7 @@ const root = express.Router();
 const post = express.Router();
 const api = express.Router();
 
- 
+
 api.post("/login", async (req, res) => {
 
     const email = req.body.email;
@@ -21,7 +21,10 @@ api.post("/login", async (req, res) => {
         return;
     }
 
-    const query_result = await DB.user.findOne({ where: { email: email }, attributes: ['password'] });
+    const query_result = await DB.user.findOne({
+        where: {email: email},
+        attributes: ['password']
+    });
 
     if (query_result && query_result.password === password) {
         res.send("Login Succesful!");
@@ -38,19 +41,28 @@ api.post("/signup", async (req, res) => {
     const name = req.body.name;
     const address = req.body.address;
 
-    if (!email || !password || !name || !address) {
-        res.status(404).send("Signup Failed!");
+    try {
+        let query_response = await DB.user.create({
+            email: email,
+            password: password,
+            name: name,
+            address: address,
+        });
+        res.send(JSON.stringify(query_response));
+    } catch (error) {
+        res.status(403).send("Database Error");
+    }
+});
+
+api.get("/activate", async (req, res) => {
+    const hash = req.query.hash;
+    
+    if(!hash) {
+        res.status(404).send("Invalid Request!");
         return;
     }
-
-    let query_response = await DB.user.create({
-        email: email,
-        password: password,
-        name: name,
-        address: address,
-    });
-
-    res.send(JSON.stringify(query_response));
+    
+    res.send(hash);
 });
 
 
@@ -83,7 +95,7 @@ user.route("/:img")
                 return res.status(500).send(err);
             }
             await upload_image(path);
-            return res.send({ status: "Success", path: path });
+            return res.send({status: "Success", path: path});
         });
     });
 
@@ -94,6 +106,9 @@ post.route("/")
     })
     .post(async (req, res) => {
         res.send("OKidoki");
+    })
+    .delete(async (req, res) => {
+
     });
 
 
