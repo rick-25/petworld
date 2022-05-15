@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" a href="css/signup.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up to pet world</title>
+    <title>Document</title>
 </head>
+
 <body>
-    <form action="http://localhost:3300/api/signup" method="post">
-        <input type="email" name="email" id="" placeholder="Email" required>
-        <input type="password" name="password" id="" placeholder="Password" required>
-        <input type="text" name="name" id="" placeholder="user name e.g John" required>
-        <input type="text" name="address" id="" placeholder="Address" required>
-        <input type="submit" value="Sign up">
-    </form>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-button">
+                <!-- <span onclick="login()">Sign in</span> -->
+                <span onclick="register()">Sign Up</span>
+                <hr id="ActiveForm">
+            </div>
+
+            <!-- <form id="LoginForm">
+                <input type="email" placeholder="Email address">
+                <input type="password" placeholder="password">
+                <button type="submit" class="btn">Sign in</button><br>
+                <a href="">Forget password?</a>
+            </form> -->
+
+            <form id="RegForm">
+                <input type="text" placeholder="First name">
+                <input type="text" placeholder="last name">
+                <input type="email" placeholder="Enter your email">
+                <input type="password" placeholder="set password">
+                <input type="password" placeholder="confirm password">
+
+                <button type="submit" class="btn">Sign up</button>
+
+            </form>
+
+        </div>
+    </div>
+
+
+    <script>
+        var LoginForm = document.getElementById("LoginForm")
+        var RegForm = document.getElementById("RegForm")
+        var ActiveForm = document.getElementById("ActiveForm")
+
+        // function register() {
+        //     RegForm.style.transform = "translateX(0px)"
+        //     LoginForm.style.transform = "translateX(0px)"
+        //     ActiveForm.style.transform = "translateX(60px)"
+        // }
+        // function login() {
+        //     RegForm.style.transform = "translateX(300px)"
+        //     LoginForm.style.transform = "translateX(300px)"
+        //     ActiveForm.style.transform = "translateX(-45px)"
+        // }
+    </script>
+
+    
 </body>
+
 </html>

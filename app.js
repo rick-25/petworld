@@ -6,12 +6,14 @@ const fileUpload = require('express-fileupload');
 
 const routes = require("./routes");
 
+const cookie_auth = require('./services/cookies_auth');
+
 
 let app = express(); //Express app
 
 
 //Adding middlewares
-app.use(require("morgan")("tiny"));
+app.use(require("morgan")("dev"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
@@ -22,25 +24,19 @@ app.use(fileUpload({
 
 
 //Serving public folder 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //Adding routes
-app.use("/", routes.root);
-app.use("/user", routes.user);
-app.use("/post", routes.post);
 app.use("/api", routes.api);
 
-app.get("/test", async (req, res) => {
-    const db = require('./models');
-    let me = await db.user.create({
-        email: "temp@gmail.com",
-        password: "1",
-        name: "1",
-        address: "1"
-    });
-    res.send(me);
-})
+
+//Routes which requries auth 
+app.use(cookie_auth);
+app.use("/user", routes.user);
+app.use("/post", routes.post);
+
+
 
 //Starting server
 app.listen(process.env.PORT || 3300, () => {

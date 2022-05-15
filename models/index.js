@@ -2,7 +2,6 @@ const petworld_config = require('../configs/petworld');
 
 const { Sequelize, DataTypes } = require('sequelize');
 
-
 const sequelize = new Sequelize({
     host: petworld_config.host,
     database: petworld_config.database,
@@ -42,21 +41,6 @@ db.sequelize.sync({ force: false })
     .then(() => {
         console.log('yes re-sync done!')
     })
-
-
-
-// 1 to Many Relation
-
-// db.user.hasMany(db.post, {
-//     foreignKey: 'creator',
-//     as: 'post'
-// })
-
-// db.post.belongsTo(db.user, {
-//     foreignKey: 'product_id',
-//     as: 'product'
-// })
-
 
 
 

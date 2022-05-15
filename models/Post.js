@@ -3,9 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     const Post = sequelize.define("post", {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true,
         },
-        creator: {
+        email: {
             type: DataTypes.STRING
         },
         animal: {
@@ -20,12 +21,14 @@ module.exports = (sequelize, DataTypes) => {
         specification: {
             type: DataTypes.STRING
         },
-        location: {
+        address: {
             type: DataTypes.STRING
         },
         image: {
             type: DataTypes.STRING
         },
+    }, {
+        timestamps: false,
     });
 
     return Post;
