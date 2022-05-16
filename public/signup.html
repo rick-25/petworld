@@ -2,20 +2,32 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" a href="css/signup.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" a href="css/signup.css">
+
+
     <title>Document</title>
+
 </head>
 
 <body>
+    <header class="header active">
+        <a href="/" class="logo"> <i class="fas fa-paw"></i> Pet World </a>
+    </header>
     <div class="container">
         <div class="form-container">
-            <div class="form-button">
-                <!-- <span onclick="login()">Sign in</span> -->
-                <span onclick="register()">Sign Up</span>
-                <hr id="ActiveForm">
+            <div class="form-heading">
+                <h2>Sign Up</h2>
+                <!-- <hr> -->
             </div>
 
             <!-- <form id="LoginForm">
@@ -25,39 +37,20 @@
                 <a href="">Forget password?</a>
             </form> -->
 
-            <form id="RegForm">
-                <input type="text" placeholder="First name">
-                <input type="text" placeholder="last name">
-                <input type="email" placeholder="Enter your email">
-                <input type="password" placeholder="set password">
-                <input type="password" placeholder="confirm password">
-
+            <form id="signup-form" action="/api/signup" method="post">
+                <input type="text" placeholder="name" name="name">
+                <input type="email" placeholder="email" name="email">
+                <input type="password" placeholder="password" name="password">
+                <input type="password" placeholder="confirm password" name="temp">
+                <input type="text" placeholder="address" name="address">
+                <input type="file" name="profile_file">
                 <button type="submit" class="btn">Sign up</button>
-
             </form>
 
         </div>
     </div>
 
 
-    <script>
-        var LoginForm = document.getElementById("LoginForm")
-        var RegForm = document.getElementById("RegForm")
-        var ActiveForm = document.getElementById("ActiveForm")
-
-        // function register() {
-        //     RegForm.style.transform = "translateX(0px)"
-        //     LoginForm.style.transform = "translateX(0px)"
-        //     ActiveForm.style.transform = "translateX(60px)"
-        // }
-        // function login() {
-        //     RegForm.style.transform = "translateX(300px)"
-        //     LoginForm.style.transform = "translateX(300px)"
-        //     ActiveForm.style.transform = "translateX(-45px)"
-        // }
-    </script>
-
-    
 </body>
 
 </html>

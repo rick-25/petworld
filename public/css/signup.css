@@ -1,82 +1,130 @@
-
-.container{
-    margin: 100px 100px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.form-container{
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.header {
     background: #fff;
-    width: 320px;
-    height: 400px;
-    position: relative;
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
-    margin: auto;
-    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1%;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+
+.header .logo {
+    font-size: 2rem;
+    color: #130f40;
+    font-weight: bolder;
+}
+
+.header .logo i {
+    color: #e67e22;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.form-container {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 15px;
+    padding: 20px;
+
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: auto;
+}
+
+.form-heading {
+    display: block;
+    width: 100%;
+    padding: 20px;
     text-align: center;
-    overflow: hidden;
+    border-bottom: 3px solid black;
 }
-.btn{
-    background-color: #ff523b;
-    color: #fff;
-    padding: 5px;
+
+#signup-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 10px;
+}
+
+#signup-form input {
+
+    width: 100%;
+
+    display: block;
+    padding: 10px 0;
+
+    font-size: 1rem;
+    margin: 0 10px;
+    border: none;
+    border-bottom: 1.5px solid black;
+}
+
+#signup-form input:focus {
     outline: none;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    width: 86%;
-    margin: 10px 0;
+}
 
-}
-.btn:hover{
-    background-color: darksalmon;
-}
-.form-container span{
-    font-weight: bold;
-    padding: 0 5px;
-    color:#555;
+
+
+button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 2.8rem;
+    border-radius: 5rem;
+    border-top-left-radius: 0;
+    border: 2px solid #130f40;
     cursor: pointer;
-    width: 100px;
-    display: inline-block;
-}   
-.form-button{
-    display: inline-block;
+    background: none;
+    color: #130f40;
+    font-size: 1rem;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+    width: 100%;
 }
-.form-container form{
-    max-width: 300px;
-    padding: 0 20px;
+
+button::before {
+    content: '';
     position: absolute;
-    top: 130px;
-    bottom: 250px;
-    transition: transform 1s;
-    
-    
-}
-form input{
-    border: 1px solid #ccc;
-    width: 80%;
-    height: 30px;
-    margin: 10px 0px;
-    padding: 0px 5px;
-
-}
-#LoginForm{
-    left: -300px;
-}
-#RegForm{
+    top: 0;
     left: 0;
-   
-}
-#ActiveForm{
-    width: 90px;
-    height: 3px;
-    margin-top: 8px;
-    margin-right: 125px;
-    transform: translateX(65px);
-    background: #ff523b;
-    border: none;
-    transition: transform 1s;
-}
-form a{
-    font-size: 12px;
-    text-decoration: none;
-    color: #555;
+    height: 100%;
+    width: 100%;
+    background: #130f40;
+    z-index: -1;
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+    -webkit-clip-path: circle(0% at 0% 5%);
+    clip-path: circle(0% at 0% 5%);
 }
 
+button:hover::before {
+    -webkit-clip-path: circle(100%);
+    clip-path: circle(100%);
+}
+
+button:hover {
+    color: #fff;
+}

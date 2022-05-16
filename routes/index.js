@@ -30,18 +30,17 @@ api.post("/login", async (req, res) => {
     if (query_result && query_result.password === password) {
 
         const sid = generateSID();
-        
+
         res.cookie("sid", sid);
         res.cookie("id", email);
 
         try {
-            await DB.user.update({ sid }, { where: {email} });
+            await DB.user.update({ sid }, { where: { email } });
             res.redirect("/feed.html");
         } catch (error) {
-            console.log(error);
             res.status(404).send(error);
         }
-    
+
     } else {
         res.status(404).send("Login Failed!");
     }
@@ -56,17 +55,18 @@ api.post("/signup", async (req, res) => {
     const address = req.body.address;
 
     try {
-        let query_response = await DB.user.create({
+        await DB.user.create({
             email: email,
             password: password,
             name: name,
             address: address,
         });
-        res.send(JSON.stringify(query_response));
+        res.redirect("/feed.html");
     } catch (error) {
-        res.status(403).send("Database Error");
+        res.status(500).send("Database Error");
     }
 });
+
 api.get("/logout", async (req, res) => {
     // if(req.)
     try {
@@ -79,6 +79,7 @@ api.get("/logout", async (req, res) => {
         res.status(500).send(error);
     }
 });
+
 api.get("/activate", async (req, res) => {
     const hash = req.query.hash;
 
@@ -96,7 +97,7 @@ user.route("/")
     .get(async (req, res) => {
         const email = req.cookies.id;
         try {
-            const response = await DB.user.findAll({ where: { email } });
+            const response = await DB.user.findAll({ where: { email }, attributes: ['name', 'address', 'profile_pic', 'active'] });
             res.send(response);
         } catch (error) {
             res.status(500).send(error);
@@ -129,7 +130,6 @@ post.route("/")
 
         try {
             const query_response = await DB.post.findAll({ where: where_conditions });
-            console.log(query_response);
             res.send(query_response);
         } catch (error) {
             res.status(500).send("Interal server error");
@@ -148,7 +148,6 @@ post.route("/")
             const query_response = await DB.post.create({
                 email, animal, breed, age, specification, address, image,
             });
-            console.log(query_response.toJSON());
             res.send(query_response);
         } catch (error) {
             res.status(500).send("Inter server error!");
@@ -172,8 +171,5 @@ post.route("/")
         }
     });
 
-module.exports = {
-    user,
-    post,
-    api,
-};
+
+module.exports = { user, post, api };
