@@ -21,6 +21,7 @@
     <header class="header active">
         <a href="/" class="logo"> <i class="fas fa-paw"></i> Pet World </a>
         <div class="buttons">
+            <a href="/add_post.html">Add Post</a>
             <a href="/api/logout">Logout</a>
         </div>
     </header>
@@ -37,34 +38,21 @@
         <header>Buy/Sell posts</header>
         <main>
             <div id="filter-container">
-                <form action="#" method="post">
+                <form action="/post" method="get" id="filter-form">
                     <input type="text" name="animal" id="animal" placeholder="Animal name">
                     <input type="text" name="breed" id="breed" placeholder="Breed name">
-                    <input type="number" name="age" placeholder="age">
+                    <input type="number" name="age" placeholder="age" id="age">
                     <input type="text" name="address" id="address" placeholder="address">
                     <button type="submit" class="buttons">Filter</button>
                 </form>
             </div>
-            <div id="post-container">
-                <div class="post">
-                    <div class="image">
-                        <img src="./image/home_bg_img.jpg" alt="" srcset="">
-                    </div>
-                    <div class="info">
-                        <div class="key">Species</div>
-                        <div class="value">Dog</div>
-                    </div>
-                    <div class="info">
-                        <div class="key">Breed</div>
-                        <div class="value">German</div>
-                    </div>
-                    <div class="info">
-                        <div class="key">Age</div>
-                        <div class="value">5</div>
-                    </div>
-                </div>
-            </div>
+            <div id="post-container"></div>
         </main>
+    </section>
+    <section class="add-post">
+        <form action="/post" method="post">
+            
+        </form>
     </section>
     <script src="js/feed.js"></script>
 </body>

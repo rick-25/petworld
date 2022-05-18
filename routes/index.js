@@ -134,14 +134,15 @@ post.route("/")
         }
     })
     .post(upload.single("image"), async (req, res) => {
-
         try {
             const query_response = await DB.post.create({
                 ...req.body,
+                email: req.cookies.id,
                 image: req.file.path
             });
             res.send(query_response);
         } catch (error) {
+            console.log(error);
             res.status(500).send(error);
         }
     })
