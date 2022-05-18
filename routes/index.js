@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 
 const user = express.Router();
 const post = express.Router();
@@ -65,7 +65,7 @@ api.post("/signup", upload.single("profile_pic"), async (req, res) => {
     try {
         await DB.user.create({
             ...req.body,
-            profile_pic : req.file.path
+            profile_pic: req.file.path
         });
         res.redirect("/signin.html");
     } catch (error) {
@@ -74,16 +74,8 @@ api.post("/signup", upload.single("profile_pic"), async (req, res) => {
 });
 
 api.get("/logout", async (req, res) => {
-    // if(req.)
-    try {
-        await DB.user.update({ sid: null }, {
-            where: {
-                email: req.cookies.id
-            }
-        });
-    } catch (error) {
-        res.status(500).send(error);
-    }
+    res.clearCookie();
+    res.redirect("../signin.html");
 });
 
 api.get("/activate", async (req, res) => {
@@ -103,7 +95,7 @@ user.route("/")
     .get(async (req, res) => {
         const email = req.cookies.id;
         try {
-            const response = await DB.user.findAll({ where: { email }, attributes: ['name', 'address', 'profile_pic', 'active'] });
+            const response = await DB.user.findOne({ where: { email }, attributes: ['name', 'address', 'profile_pic'] });
             res.send(response);
         } catch (error) {
             res.status(500).send(error);
@@ -143,18 +135,8 @@ post.route("/")
     })
     .post(upload.single("image"), async (req, res) => {
 
-        /*
-        const email = req.body.email;
-        const animal = req.body.animal;
-        const breed = req.body.breed;
-        const age = req.body.age;
-        const specification = req.body.specification;
-        const address = req.body.address;
-        const image = req.body.image;
-        */
         try {
             const query_response = await DB.post.create({
-                // email, animal, breed, age, specification, address, image,
                 ...req.body,
                 image: req.file.path
             });

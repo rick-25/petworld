@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+}
+
+
+.banner {
+    width: 100%;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-size: cover;
+
+    text-align: center;
+
+
+    overflow: hidden;
+}
+
+.banner .container {
+    width: 100%;
+}
+.banner > img {
+    display: block;
+    width: 100%;
+}
+.banner .profile {
+    padding: 10px;
+}
+.buttons {
+    display: block;
+
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    color: white;
+    background-color: black;
+}
+
+
+
+.post-section {
+    margin-top: 30px;
+}
+
+.post-section > header {
+    padding: 10px;
+    color: white;
+    background-color: #e67e22;
+    
+    text-align: center;
+    text-decoration: underline;
+}
+
+.post-section main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 30px;
+}
+
+#filter-container {
+    width: 100%;
+    padding: 10px;
+}
+
+#filter-container form {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 8px;
+}
+
+#filter-container input {
+
+    width: 100%;
+
+    display: block;
+    padding: 10px 0;
+
+    font-size: .8rem;
+    margin: 0 10px;
+    border: none;
+    border-bottom: 1.5px solid black;
+}
+
+#filter-container input:focus {
+    outline: none;
+}
+
+#post-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    padding: 10px;
+
+    width: 300px;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.post:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post .image img {
+    width: 100%;
+}
+
+.post .info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+}
+
+.key {
+    color: grey;
+}
+.key, .value {
+    width: 100%;
+    text-align: start;
+}
+

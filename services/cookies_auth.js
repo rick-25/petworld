@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     console.log("Passing through cookie verifier..");
 
     if(!req.cookies.id || !req.cookies.sid) {
-        res.status(404).send("Missign cookies!");
+        res.redirect("http://localhost:3300/signin.html");
         return;
     } 
 

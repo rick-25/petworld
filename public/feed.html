@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/common-header.css">
+    <link rel="stylesheet" href="css/feed.css">
+
     <title>Feed</title>
+
 </head>
+
 <body>
-    <h1>This is feed page</h1>
+    <header class="header active">
+        <a href="/" class="logo"> <i class="fas fa-paw"></i> Pet World </a>
+        <div class="buttons">
+            <a href="/api/logout">Logout</a>
+        </div>
+    </header>
+    <div class="banner">
+        <img src="image/contact_img.png" alt="">
+        <div class="container">
+            <div class="profile">
+                <img src="#" alt="" srcset="" width="100px" height="100px" id="profile_pic">
+                <h2 id="username">Hello! {UserName}</h2>
+            </div>
+        </div>
+    </div>
+    <section class="post-section">
+        <header>Buy/Sell posts</header>
+        <main>
+            <div id="filter-container">
+                <form action="#" method="post">
+                    <input type="text" name="animal" id="animal" placeholder="Animal name">
+                    <input type="text" name="breed" id="breed" placeholder="Breed name">
+                    <input type="number" name="age" placeholder="age">
+                    <input type="text" name="address" id="address" placeholder="address">
+                    <button type="submit" class="buttons">Filter</button>
+                </form>
+            </div>
+            <div id="post-container">
+                <div class="post">
+                    <div class="image">
+                        <img src="./image/home_bg_img.jpg" alt="" srcset="">
+                    </div>
+                    <div class="info">
+                        <div class="key">Species</div>
+                        <div class="value">Dog</div>
+                    </div>
+                    <div class="info">
+                        <div class="key">Breed</div>
+                        <div class="value">German</div>
+                    </div>
+                    <div class="info">
+                        <div class="key">Age</div>
+                        <div class="value">5</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="js/feed.js"></script>
 </body>
+
 </html>

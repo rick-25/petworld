@@ -2,7 +2,6 @@ const path = require('path');
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const fileUpload = require('express-fileupload');
 
 const routes = require("./routes");
 
