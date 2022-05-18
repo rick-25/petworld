@@ -14,12 +14,10 @@ let app = express(); //Express app
 
 //Adding middlewares
 app.use(require("morgan")("dev"));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(fileUpload({
-    createParentPath: true,
-}));
+// app.use(fileUpload({ createParentPath: true }));
 
 
 

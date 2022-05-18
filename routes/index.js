@@ -61,7 +61,7 @@ api.post("/signup", async (req, res) => {
             name: name,
             address: address,
         });
-        res.redirect("/feed.html");
+        res.redirect("/signin.html");
     } catch (error) {
         res.status(500).send("Database Error");
     }

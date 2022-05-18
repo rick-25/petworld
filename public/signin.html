@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" a href="css/signin.css">
+    <link rel="stylesheet" href="css/common-header.css">
+
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header class="header active">
+        <a href="/" class="logo"> <i class="fas fa-paw"></i> Pet World </a>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-heading">
+                <h2>Sign in</h2>
+                <!-- <hr> -->
+            </div>
+
+            <!-- <form id="LoginForm">
+                <input type="email" placeholder="Email address">
+                <input type="password" placeholder="password">
+                <button type="submit" class="btn">Sign in</button><br>
+                <a href="">Forget password?</a>
+            </form> -->
+
+            <form id="signin-form" action="/api/login" method="post">
+                <input type="email" placeholder="email" name="email" required>
+                <input type="password" placeholder="password" name="password" required>
+                <button type="submit" class="btn">Sign up</button>
+            </form>
+            <a href="/signup.html">Sign up</a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

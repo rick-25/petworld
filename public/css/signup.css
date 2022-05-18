@@ -7,28 +7,13 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-image: url('../image/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
 }
 
 
-.header {
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1%;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
-}
-
-
-.header .logo {
-    font-size: 2rem;
-    color: #130f40;
-    font-weight: bolder;
-}
-
-.header .logo i {
-    color: #e67e22;
-}
 
 .container {
     display: flex;
@@ -45,10 +30,15 @@ body {
     align-items: center;
     flex-flow: column nowrap;
     gap: 15px;
+
     padding: 20px;
 
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    
+    
+    background-color: white;
+
     overflow: auto;
 }
 
@@ -87,6 +77,10 @@ body {
 }
 
 
+#signup-form label {
+    width: 100%;
+    color: rgb(104, 104, 104);
+}
 
 button {
     display: inline-block;
