@@ -141,7 +141,9 @@ post.route("/")
             res.status(500).send("Interal server error");
         }
     })
-    .post(async (req, res) => {
+    .post(upload.single("image"), async (req, res) => {
+
+        /*
         const email = req.body.email;
         const animal = req.body.animal;
         const breed = req.body.breed;
@@ -149,14 +151,16 @@ post.route("/")
         const specification = req.body.specification;
         const address = req.body.address;
         const image = req.body.image;
-
+        */
         try {
             const query_response = await DB.post.create({
-                email, animal, breed, age, specification, address, image,
+                // email, animal, breed, age, specification, address, image,
+                ...req.body,
+                image: req.file.path
             });
             res.send(query_response);
         } catch (error) {
-            res.status(500).send("Inter server error!");
+            res.status(500).send(error);
         }
     })
     .delete(async (req, res) => {
