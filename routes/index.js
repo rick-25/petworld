@@ -1,10 +1,23 @@
 const express = require('express');
+const multer = require('multer');
+
 const { Op, where } = require('sequelize');
 
 const DB = require('../models');
 
 const generateSID = require('../services/sid');
 
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/image');
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+});
+
+const upload = multer({storage: storage});
 
 const user = express.Router();
 const post = express.Router();
@@ -47,23 +60,16 @@ api.post("/login", async (req, res) => {
 
 });
 
-api.post("/signup", async (req, res) => {
-
-    const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
-    const address = req.body.address;
+api.post("/signup", upload.single("profile_pic"), async (req, res) => {
 
     try {
         await DB.user.create({
-            email: email,
-            password: password,
-            name: name,
-            address: address,
+            ...req.body,
+            profile_pic : req.file.path
         });
         res.redirect("/signin.html");
     } catch (error) {
-        res.status(500).send("Database Error");
+        res.status(500).send(error);
     }
 });
 
